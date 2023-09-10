@@ -8,93 +8,98 @@
 </head>
 <body>
     <button id="mute-button">🔊</button>
-    <div class="game-container">
-        <div class="perguntas">
-            <h2>Perguntas</h2>
-            <div class="column">
-                <div class="card question-card" data-card="1">
-                    <div class="card-inner">
-                        <div class="card-front">Pergunta 1</div>
-                        <div class="card-back" id="question-0"></div>
+    <div class="body-container">
+        <div id="pontuacao-container">
+            <p id="pontuacao">PONTUAÇÃO: 100 PTS</p>
+        </div>
+        <div class="game-container">
+            <div class="perguntas">
+                <h2>Perguntas</h2>
+                <div class="column">
+                    <div class="card question-card" data-card="1">
+                        <div class="card-inner">
+                            <div class="card-front">Pergunta 1</div>
+                            <div class="card-back" id="question-0"></div>
+                        </div>
+                    </div>
+                    <div class="card question-card" data-card="2">
+                        <div class="card-inner">
+                            <div class="card-front">Pergunta 2</div>
+                            <div class="card-back" id="question-1"></div>
+                        </div>
+                    </div>
+                    <div class="card question-card" data-card="3">
+                        <div class="card-inner">
+                            <div class="card-front">Pergunta 3</div>
+                            <div class="card-back" id="question-2"></div>
+                        </div>
+                    </div>
+                    <div class="card question-card" data-card="4">
+                        <div class="card-inner">
+                            <div class="card-front">Pergunta 4</div>
+                            <div class="card-back" id="question-3"></div>
+                        </div>
+                    </div>
+                    <div class="card question-card" data-card="5">
+                        <div class="card-inner">
+                            <div class="card-front">Pergunta 5</div>
+                            <div class="card-back" id="question-4"></div>
+                        </div>
+                    </div>
+                    <div class="card question-card" data-card="6">
+                        <div class="card-inner">
+                            <div class="card-front">Pergunta 5</div>
+                            <div class="card-back" id="question-5"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="card question-card" data-card="2">
-                    <div class="card-inner">
-                        <div class="card-front">Pergunta 2</div>
-                        <div class="card-back" id="question-1"></div>
+            </div>
+            <div class="respostas">
+                <h2>Respostas</h2>
+                <div class="column">
+                    <div class="card answer-card" data-card="a">
+                        <div class="card-inner">
+                            <div class="card-front">Resposta A</div>
+                            <div class="card-back" id="answer-0"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="card question-card" data-card="3">
-                    <div class="card-inner">
-                        <div class="card-front">Pergunta 3</div>
-                        <div class="card-back" id="question-2"></div>
+                    <div class="card answer-card" data-card="b">
+                        <div class="card-inner">
+                            <div class="card-front">Resposta B</div>
+                            <div class="card-back" id="answer-1"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="card question-card" data-card="4">
-                    <div class="card-inner">
-                        <div class="card-front">Pergunta 4</div>
-                        <div class="card-back" id="question-3"></div>
+                    <div class="card answer-card" data-card="c">
+                        <div class="card-inner">
+                            <div class="card-front">Resposta C</div>
+                            <div class="card-back" id="answer-2"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="card question-card" data-card="5">
-                    <div class="card-inner">
-                        <div class="card-front">Pergunta 5</div>
-                        <div class="card-back" id="question-4"></div>
+                    <div class="card answer-card" data-card="d">
+                        <div class="card-inner">
+                            <div class="card-front">Resposta D</div>
+                            <div class="card-back" id="answer-3"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="card question-card" data-card="6">
-                    <div class="card-inner">
-                        <div class="card-front">Pergunta 5</div>
-                        <div class="card-back" id="question-5"></div>
+                    <div class="card answer-card" data-card="e">
+                        <div class="card-inner">
+                            <div class="card-front">Resposta E</div>
+                            <div class="card-back" id="answer-4"></div>
+                        </div>
+                    </div>
+                    <div class="card answer-card" data-card="f">
+                        <div class="card-inner">
+                            <div class="card-front">Resposta E</div>
+                            <div class="card-back" id="answer-5"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="respostas">
-            <h2>Respostas</h2>
-            <div class="column">
-                <div class="card answer-card" data-card="a">
-                    <div class="card-inner">
-                        <div class="card-front">Resposta A</div>
-                        <div class="card-back" id="answer-0"></div>
-                    </div>
-                </div>
-                <div class="card answer-card" data-card="b">
-                    <div class="card-inner">
-                        <div class="card-front">Resposta B</div>
-                        <div class="card-back" id="answer-1"></div>
-                    </div>
-                </div>
-                <div class="card answer-card" data-card="c">
-                    <div class="card-inner">
-                        <div class="card-front">Resposta C</div>
-                        <div class="card-back" id="answer-2"></div>
-                    </div>
-                </div>
-                <div class="card answer-card" data-card="d">
-                    <div class="card-inner">
-                        <div class="card-front">Resposta D</div>
-                        <div class="card-back" id="answer-3"></div>
-                    </div>
-                </div>
-                <div class="card answer-card" data-card="e">
-                    <div class="card-inner">
-                        <div class="card-front">Resposta E</div>
-                        <div class="card-back" id="answer-4"></div>
-                    </div>
-                </div>
-                <div class="card answer-card" data-card="f">
-                    <div class="card-inner">
-                        <div class="card-front">Resposta E</div>
-                        <div class="card-back" id="answer-5"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <audio id="meuAudioErro" src="erro.mp3"></audio>
+        <audio id="meuAudioAcerto" src="correto.mp3"></audio>
+        <button id="reset-button">Reiniciar Partida</button>
     </div>
-    <audio id="meuAudioErro" src="erro.mp3"></audio>
-    <audio id="meuAudioAcerto" src="correto.mp3"></audio>
-    <button id="reset-button">Reiniciar Partida</button>
     <script src="script.js"></script>
 </body>
 </html>

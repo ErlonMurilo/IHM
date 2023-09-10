@@ -2,6 +2,7 @@ window.addEventListener('load', function() {
     resetGame();    
 });
 
+const pontuacaoElement = document.getElementById('pontuacao');
 const questionCards = document.querySelectorAll('.question-card');
 const answerCards = document.querySelectorAll('.answer-card');
 var meuAudioErro = document.getElementById('meuAudioErro');
@@ -9,6 +10,11 @@ var meuAudioAcerto = document.getElementById('meuAudioAcerto');
 var listaPerguntas = [];
 var posicaoCartas = ['a','b','c','d','e','f'];
 var listaNum =[];
+var pontuacao = 100;
+var pontuacaoAcumuladaPorRodada = 0;
+var correctAnswersCount = 0;
+var round = 1; 
+
 
 meuAudioErro.volume=0.5;
 
@@ -43,11 +49,31 @@ function checkMatch() {
             selectedAnswer.classList.add('matched');
             selectedQuestion = null;
             selectedAnswer = null;
+            pontuacao += 20; 
+            correctAnswersCount++;
+
+            // Verifique se o jogador acertou todas as cartas
+            if (correctAnswersCount === 6) {
+                pontuacaoAcumuladaPorRodada += pontuacao;
+                // Verifique se o jogador venceu o jogo
+                if (round === 8) {
+                    // Exiba a mensagem de parabéns
+                    correctAnswersCount = 0;
+                    round=1;
+                    alert('Parabéns! Você venceu o jogo!');
+                } else {
+                    setTimeout(() => {
+                        resetGame();
+                        round++;
+                    }, 1000); 
+                    
+                }
+            }
         } else {
             meuAudioErro.play();
             selectedQuestion.classList.add('wrong');
             selectedAnswer.classList.add('wrong');
-
+            pontuacao -= 10;
             // Remover classe temporária após um período
             setTimeout(() => {
                 resetCards([selectedQuestion, selectedAnswer]);
@@ -55,6 +81,9 @@ function checkMatch() {
                 selectedAnswer = null;
             }, 2500); // Tempo em milissegundos (1 segundo)
         }
+        console.log('.........................',pontuacao);
+        // Atualizar a exibição da pontuação na interface
+        pontuacaoElement.textContent = `PONTUAÇÃO: ${pontuacao} PTS`;
     }
 }
 
@@ -115,6 +144,7 @@ async function resetGame() {
         // Preencher os cartões com as perguntas e respostas aleatórias
         for (let i = 0; i < 6; i++) {
             if(listaPerguntas.length>=48){
+                listaPerguntas=[];
                 console.log("ja usou todas as perguntas")
                 break;
             }
@@ -175,35 +205,17 @@ async function resetGame() {
             answerCard.textContent = dado.resposta;
         }
     }
-
+    correctAnswersCount = 0;
     listaNum=[];
 }
 
-// function embaralharCartas(){
-//     var listaNum =[];
-//     console.log(listaNum);
-//     var status=true;
-//     console.log(answerCards);
-//     console.log(answerCards.length)
-
-//     answerCards.forEach(function(elemento) {
-//         console.log('oi')
-//         console.log(elemento)
-//         var numeroAleatorio = Math.floor(Math.random() * (5 - 0 + 1)) + 0;
-//         console.log(numeroAleatorio)
-//         while (status) {
-//             if(listaNum.includes(numeroAleatorio)){
-//                 numeroAleatorio = Math.floor(Math.random() * (5 - 0 + 1)) + 0;
-//             }else{
-//                 elemento.setAttribute('data-card', posicaoCartas[numeroAleatorio]);
-//                 listaNum.push(numeroAleatorio);
-//                 status = false;
-//             }
-//         }    
-//     });
-// }
-
-resetButton.addEventListener('click', resetGame);
+resetButton.addEventListener('click', function(){
+    resetGame()
+    round = 1
+    pontuacao = 100
+    pontuacaoElement.textContent = `PONTUAÇÃO: ${pontuacao} PTS`
+}
+);
 
 const muteButton = document.getElementById('mute-button');
 let isMuted = false;
