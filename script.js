@@ -1,8 +1,11 @@
 window.addEventListener('load', function() {
-    resetGame();    
+    resetGame();
 });
 
+const resultadoElement = document.getElementById('resultado');
+const mensagemElement = document.getElementById('mensagem');
 const pontuacaoElement = document.getElementById('pontuacao');
+const roundElement = document.getElementById('round');
 const questionCards = document.querySelectorAll('.question-card');
 const answerCards = document.querySelectorAll('.answer-card');
 var meuAudioErro = document.getElementById('meuAudioErro');
@@ -13,7 +16,7 @@ var listaNum =[];
 var pontuacao = 100;
 var pontuacaoAcumuladaPorRodada = 0;
 var correctAnswersCount = 0;
-var round = 1; 
+var round = 1;
 
 
 meuAudioErro.volume=0.5;
@@ -49,7 +52,7 @@ function checkMatch() {
             selectedAnswer.classList.add('matched');
             selectedQuestion = null;
             selectedAnswer = null;
-            pontuacao += 20; 
+            pontuacao += 20;
             correctAnswersCount++;
 
             // Verifique se o jogador acertou todas as cartas
@@ -60,27 +63,48 @@ function checkMatch() {
                     // Exiba a mensagem de parabéns
                     correctAnswersCount = 0;
                     round=1;
-                    alert('Parabéns! Você venceu o jogo!');
+                    resultadoElement.style.display="flex";
+                    mensagemElement.textContent = `Parabéns você conseguiu memorizar todas questões!!!`;
+                    roundElement.textContent = `RODADA: ${round}`
                 } else {
                     setTimeout(() => {
                         resetGame();
                         round++;
-                    }, 1000); 
-                    
+                        roundElement.textContent = `RODADA: ${round}`
+                    }, 1000);
+
                 }
             }
         } else {
             meuAudioErro.play();
             selectedQuestion.classList.add('wrong');
             selectedAnswer.classList.add('wrong');
-            pontuacao -= 10;
-            // Remover classe temporária após um período
+            pontuacao -= 20;
+
             setTimeout(() => {
-                resetCards([selectedQuestion, selectedAnswer]);
-                selectedQuestion = null;
-                selectedAnswer = null;
-            }, 2500); // Tempo em milissegundos (1 segundo)
+                if (pontuacao <= 0) {
+                    // Exiba a mensagem de Game Over e defina a pontuação como 0
+                    pontuacao = 0;
+                    pontuacaoElement.textContent = `PONTUAÇÃO: ${pontuacao} PTS`;
+                    resetGame()
+                    round = 1
+                    roundElement.textContent = `RODADA: ${round}`
+                    pontuacao = 100
+                    pontuacaoElement.textContent = `PONTUAÇÃO: ${pontuacao} PTS`
+                    mensagemElement.textContent = `GAME OVER`;
+                    resultadoElement.style.display="flex";
+                    // Você pode adicionar mais ações aqui, como redefinir o jogo.
+                } else {
+                    // Remover classe temporária após um período
+                    setTimeout(() => {
+                        resetCards([selectedQuestion, selectedAnswer]);
+                        selectedQuestion = null;
+                        selectedAnswer = null;
+                    }, 2500); // Tempo em milissegundos (2,5 segundos)
+                }
+            }, 2000); 
         }
+
         console.log('.........................',pontuacao);
         // Atualizar a exibição da pontuação na interface
         pontuacaoElement.textContent = `PONTUAÇÃO: ${pontuacao} PTS`;
@@ -108,7 +132,7 @@ answerCards.forEach(answerCard => {
 });
 
 // Adicionar código para o botão de reiniciar
-const resetButton = document.getElementById('reset-button');
+const resetButtons = document.querySelectorAll('.reset-button');
 
 
 async function resetGame() {
@@ -148,13 +172,13 @@ async function resetGame() {
                 console.log("ja usou todas as perguntas")
                 break;
             }
-            
+
             var status = true;
-            
+
             var numeroAleatorio = Math.floor(Math.random() * (48 - 0 + 1)) + 0;
             console.log(listaPerguntas);
             console.log("primeiro:"+numeroAleatorio);
-            
+
             while (status) {
                 console.log('entrou')
                 console.log(numeroAleatorio)
@@ -173,7 +197,7 @@ async function resetGame() {
             listaPerguntas.push(numeroAleatorio);
             console.log(listaPerguntas);
 
-            
+
             var status2=true;
 
             console.log("----------")
@@ -191,7 +215,7 @@ async function resetGame() {
                     listaNum.push(numeroAleatorio2);
                     status2 = false;
                 }
-            } 
+            }
             console.log("listaNum =",listaNum);
             console.log("logo ",i)
 
@@ -200,7 +224,7 @@ async function resetGame() {
             const dado = listaDePerguntasERespostas[numeroAleatorio];
 
             answerCards[numeroAleatorio2].setAttribute('data-card', posicaoCartas[i]);
-            
+
             questionCard.textContent = dado.pergunta;
             answerCard.textContent = dado.resposta;
         }
@@ -209,12 +233,15 @@ async function resetGame() {
     listaNum=[];
 }
 
-resetButton.addEventListener('click', function(){
-    resetGame()
-    round = 1
-    pontuacao = 100
-    pontuacaoElement.textContent = `PONTUAÇÃO: ${pontuacao} PTS`
-}
+resetButtons.forEach(resetButton => {
+    resetButton.addEventListener('click', () =>{
+        resultadoElement.style.display="none";
+        resetGame()
+        round = 1
+        roundElement.textContent = `RODADA: ${round}`
+        pontuacao = 100
+        pontuacaoElement.textContent = `PONTUAÇÃO: ${pontuacao} PTS`
+    })}
 );
 
 const muteButton = document.getElementById('mute-button');
@@ -235,7 +262,7 @@ muteButton.addEventListener('click', toggleMute);
 
 async function fetchRandomQuestions() {
     const api_Url = 'https://projeto-ihm-c4daf-default-rtdb.firebaseio.com/questoes/.json';
-    
+
     try {
         const response = await fetch(api_Url);
         if (!response.ok) {

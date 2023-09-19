@@ -1,29 +1,346 @@
-/* Estilos CSS */
+@media screen and (max-width: 777px) {
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-image: url(background.jpg);
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+  }
+
+  header{
+    background-color: #35656e;
+    position: fixed;
+    width: 100%;
+    padding: 10px 0px 10px 0px ;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
+  }
+
+  #mute-button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    outline: none;
+  }
+
+  #mute-button:hover {
+    transform: scale(1.3);
+  }
+
+  #pontuacao {
+    display: flex;
+    align-items: center;
+    background-color: #dedfe0;
+    border-radius: 5px;
+    font-size: 1.3em;
+    font-weight: bold;
+    box-shadow:  4px 6px rgba(51, 31, 31, 0.651);
+    margin: 0;
+    padding: 10px;
+  }
+
+  #round {
+    display: flex;
+    align-items: center;
+    background-color: #dedfe0;
+    border-radius: 5px;
+    font-size: 1.3em;
+    font-weight: bold;
+    box-shadow:  4px 6px rgba(51, 31, 31, 0.651);
+    margin: 0;
+    padding: 10px;
+  }
+
+  .reset-button {
+    display: flex;
+    align-items: center;
+    background-color: #85b2df;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3em;
+    font-weight: bold;
+    box-shadow:  4px 6px rgba(51, 31, 31, 0.651);
+    margin: 0;
+    padding: 10px;
+    
+  }
+
+  .reset-button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    background-color: white;
+  }
+
+  .perguntas,
+  .respostas {
+    flex: 1;
+  }
+
+  .game-container {
+    padding-top: 70px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .game-container h2{
+    background-color: #dedfe0;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    box-shadow:  4px 6px rgba(51, 31, 31, 0.651);
+    padding: 5px;
+    margin:  20px 20px 0px 20px;
+  }
+
+  .column {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 10px;
+  }
+
+  .card {
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(22, 22, 22, 0.315);
+    width: 100%;
+    height: 150px;
+    cursor: pointer;
+    margin: 10px;
+  }
+
+  .card .card-inner {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+  }
+
+  .card .card-front:hover {
+    transform: scale(1.1);
+  }
+
+  .card .card-front,
+  .card .card-back {
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: white;
+    border-radius: 10px;
+  }
+
+  .card .card-front {
+    background-image: url(l.jpeg);
+    background-position: center;
+    background-size: cover;
+  }
+
+  .card .card-back {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: black;
+    transform: rotateY(180deg);
+  }
+
+  .card.selected .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .normal {
+    background-color: rgb(240, 210, 210);
+  }
+
+  .selected {
+    border-radius: 10px;
+    border: 2px solid #35656e;
+    background-color: #77c9da;
+  }
+
+  .matched {
+    background-color: rgb(182, 209, 182);
+    border: 2px solid green;
+    border-radius: 10px;
+    animation: shake 0.5s;
+  }
+
+  .wrong {
+    background-color: rgb(240, 210, 210);
+    border: 2px solid red;
+    border-radius: 10px;
+    animation: shake 0.5s;
+  }
+
+  #resultado {
+    display: none;
+    flex-direction: column; /* Isso alinha os elementos verticalmente */
+    justify-content: center; /* Isso centraliza verticalmente os elementos */
+    align-items: center; /* Isso centraliza horizontalmente os elementos */
+    height: 100vh;
+    background-color: #BBC5CC;
+    font-size: 3rem;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 10px;
+    position: fixed;
+    left: 25%;
+    top: 25%;
+    height: 50vh;
+    width: 50vw;
+    z-index: 1;
+    /* Um valor menor que o das cartas */
+    /* Outros estilos da div #resultado */
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (min-width:778px) {
   body {
-    background-image: url(tessellation.png);
-    background-size: 100px;
+    background-image: url(background.jpg);
+    background-size: cover;
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     text-align: center;
   }
 
-  .body-container{
+  .body-container {
     margin: auto;
     width: 80%;
   }
 
+  #resultado {
+    display: none;
+    flex-direction: column; /* Isso alinha os elementos verticalmente */
+    justify-content: center; /* Isso centraliza verticalmente os elementos */
+    align-items: center; /* Isso centraliza horizontalmente os elementos */
+    height: 100vh;
+    background-color: #BBC5CC;
+    font-size: 3rem;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 10px;
+    position: fixed;
+    left: 25%;
+    top: 25%;
+    height: 50vh;
+    width: 50vw;
+    z-index: 1;
+    /* Um valor menor que o das cartas */
+    /* Outros estilos da div #resultado */
+  }
+
+  #resultado .reset-button {
+    font-size: 1.2rem;
+    max-width: 50%;
+    max-height: 10%;
+  }
+
   #pontuacao-container {
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
   }
 
   #pontuacao {
-    display: inline-block;
     max-width: 180px;
-    background-color: #bbc5cc; /* Cor de fundo */
-    color: rgb(0, 0, 0); /* Cor do texto */
+    background-color: #bbc5cc;
+    /* Cor de fundo */
+    color: rgb(0, 0, 0);
+    /* Cor do texto */
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    padding: 10px;
+  }
+
+  #round {
+    display: flex;
+    align-items: center;
+    max-width: 180px;
+    background-color: #bbc5cc;
+    /* Cor de fundo */
+    color: rgb(0, 0, 0);
+    /* Cor do texto */
     padding: 10px;
     border-radius: 5px;
     margin-top: 20px;
@@ -36,9 +353,12 @@
 
   #mute-button {
     position: fixed;
-    top: 10px; /* Adjust the top position as needed */
-    left: 10px; /* Adjust the left position as needed */
-    z-index: 999; /* Ensure the button appears on top of other content */
+    top: 10px;
+    /* Adjust the top position as needed */
+    left: 10px;
+    /* Adjust the left position as needed */
+    z-index: 999;
+    /* Ensure the button appears on top of other content */
     background-color: transparent;
     border: none;
     font-size: 24px;
@@ -46,19 +366,18 @@
     outline: none;
   }
 
-  #mute-button:hover{
+  #mute-button:hover {
     transform: scale(1.3);
   }
 
-  #reset-button{
+  .reset-button {
     cursor: pointer;
     border-radius: 10px;
     font-size: 1.2em;
     padding: 10px;
-    margin: 30px;
   }
 
-  #reset-button:hover{
+  .reset-button:hover {
     transform: scale(1.02);
     background-color: #a3a3a3;
   }
@@ -66,16 +385,15 @@
   .game-container {
     margin: 30px auto;
     justify-content: space-between;
-    background-color: white;
+    /* background-color: white; */
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
   }
 
-  .perguntas, .respostas {
+  .perguntas,
+  .respostas {
     flex: 1;
-    padding: 10px;
-    text-align: center;
   }
 
   .column {
@@ -83,9 +401,9 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 5px; */
+    /* background-color: #f9f9f9; */
     text-align: center;
     max-height: 100%;
   }
@@ -128,24 +446,26 @@
     border-radius: 10px;
   }
 
-  .card .card-front{
-    background-image: url(back.png);
+  .card .card-front {
+    background-image: url(l.jpeg);
+    background-position: center;
+    background-size: cover;
     display: flex;
     justify-content: right;
   }
 
-  .card .card-back{
+  .card .card-back {
     font-size: 1.1em;
     font-weight: bold;
     color: black;
     transform: rotateY(180deg);
   }
 
-  .card.selected .card-inner{
+  .card.selected .card-inner {
     transform: rotateY(180deg);
   }
 
-  .card.selected .card-back{
+  .card.selected .card-back {
     display: flex;
   }
 
@@ -156,7 +476,8 @@
   .selected {
     border-radius: 10px;
     border: 2px solid #35656e;
-    background-color: #77c9da; /* Cor de fundo quando selecionada */
+    background-color: #77c9da;
+    /* Cor de fundo quando selecionada */
   }
 
   .matched {
@@ -174,17 +495,76 @@
   }
 
   @keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
+    0% {
+      transform: translateX(0);
+    }
+
+    25% {
+      transform: translateX(-5px);
+    }
+
+    50% {
+      transform: translateX(5px);
+    }
+
+    75% {
+      transform: translateX(-5px);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (min-width: 992px) {
 
-  .body-container{
+  .body-container {
     margin: auto;
     max-width: 1200px;
   }
@@ -199,7 +579,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
 
-  .column{
+  .column {
     justify-content: center;
   }
 
@@ -209,37 +589,47 @@
     cursor: pointer;
     margin: 10px;
   }
- 
+
 }
 
-/* Estilos CSS para telas menores que 778px */
-@media screen and (max-width: 777px) {
-  body {
-    background-image: none; /* Remove a imagem de fundo */
-    background-color: #ffffff; /* Altera a cor de fundo para branco */
-    text-align: left; /* Alinhe o texto à esquerda */
-  }
 
-  .game-container {
-    margin: 10px auto; /* Reduz a margem do container do jogo */
-    width: 95%; /* Reduz a largura do container */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
 
-  .column {
-    flex-direction: column; /* Altera a direção da flexbox para vertical */
-    align-items: center; /* Centraliza os elementos verticalmente */
-  }
 
-  .card {
-    width: 90%; /* Reduz a largura das cartas */
-    height: auto; /* Ajusta a altura automaticamente */
-    margin: 5px 0; /* Reduz a margem das cartas */
-  }
 
-  /* Outras regras de estilo específicas para telas menores aqui */
 
-  /* Remova ou substitua regras específicas de tela grande, se necessário */
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
